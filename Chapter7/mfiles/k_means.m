@@ -46,9 +46,9 @@ while(e~=0)
     J=sum(min(dist_all));
     
     for j=1:m
-        if(sum(bel==j)~=0)
-            theta(:,j)=sum(X'.*((bel==j)'*ones(1,l))) / sum(bel==j);
+        if(sum(bel==j)~=0) %bel==j 这是逻辑运算，生成的结果的大小与bel相等。如果没有一个样本被分配到该簇，则该簇的中心点的值，不再更新
+            theta(:,j)=sum(X'.*((bel==j)'*ones(1,l))) / sum(bel==j); %计算一簇数据的均值
         end
     end
-    e=sum(sum(abs(theta-theta_old)));
+    e=sum(sum(abs(theta-theta_old))); %计算前后两次簇中心点的差，如果为0，则算法停止
 end
