@@ -19,4 +19,5 @@ w_ini=[1 1 -0.5]';
 [w, iter, mis_clas] = perce(X1, y1, w_ini, rho)
 
 
-figure(1), fplot(@(x) (((-w(1)) * x) /(w(2)) + w(3)));
+%figure(1), fplot(@(x) (((-w(1)) * x) /(w(2)) + w(3)));
+figure(1), plotpc([w(1) w(2)], w(3));
